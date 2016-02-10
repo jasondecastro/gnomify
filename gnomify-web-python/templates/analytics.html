@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Gnomify superb data!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['geochart']}]}"></script>
+<script>
+      google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Clicks'],
+          ['United States', 300],
+          ['Canada', 500],
+          ['GB', 1000],
+          ['Japan', 700],
+
+        ]);
+
+        var options = {legend: false
+};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+      </script>
+         <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Chrome',     {{chrome_clicks}}],
+          ['Firefox',      {{ff_clicks}}],
+          ['Safari',  {{safari_clicks}}],
+          ['Opera', {{opera_clicks}}],
+          ['Other',    7]
+        ]);
+
+        var options = {legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+       <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['iOS',     {{iphone_clicks}}],
+          ['Android',      {{android_clicks}}],
+          ['BlackBerry',  2],
+          ['WP', 2],
+          ['Other',    7]
+        ]);
+
+        var options = {legend: 'none'        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+     <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Browser');
+        data.addColumn('number', 'Clicks');
+        data.addRows([
+          ['Firefox',  {v: {{ff_clicks}}, f: '{{ff_clicks|string()}}' }],
+          ['Chrome',   {v:{{chrome_clicks}},   f: '{{chrome_clicks|string()}}'}],
+          ['IE', {v: {{ie_clicks}}, f: '{{ie_clicks|string()}}'}],
+          ['Opera',   {v: {{opera_clicks}},  f: '{{opera_clicks|string()}}'}],
+          ['Safari',   {v: {{safari_clicks}},  f: '{{safari_clicks|string()}}'}]
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+         <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Platform');
+        data.addColumn('number', 'Clicks');
+        data.addRows([
+          ['Windows',   {v: {{windows_clicks}},  f: '{{windows_clicks|string()}}'}],
+          ['Mac',   {v: {{macos_clicks}},  f: '{{macos_clicks|string()}}'}],
+          ['Linux',   {v: {{macos_clicks}},  f: '{{macos_clicks|string()}}'}],
+          ['ChromeOS', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}],
+        ['Raspberry Pi', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}],
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div3'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+         <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Mobile');
+        data.addColumn('number', 'Clicks');
+        data.addRows([
+          ['iPhone',   {v: {{iphone_clicks}},  f: '{{iphone_clicks|string()}}'}],
+          ['Android',   {v: {{android_clicks}},  f: '{{android_clicks|string()}}'}],
+          ['BlackBerry',   {v: {{android_clicks}},  f: '{{android_clicks|string()}}'}],
+          ['Windows Phone',   {v: {{android_clicks}},  f: '{{android_clicks|string()}}'}],
+          ['Sony', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}],
+
+
+
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div4'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+         <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Social Media');
+        data.addColumn('number', 'Clicks');
+        data.addRows([
+          ['Facebook',  {v: {{fb_clicks}}, f: '{{fb_clicks|string()}}' }],
+          ['Twitter',   {v:{{twitter_clicks}},   f: '{{twitter_clicks|string()}}'}],
+          ['Google+', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}],
+          ['MySpace', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}],
+          ['YouTube', {v: {{google_clicks}}, f: '{{google_clicks|string()}}'}]
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div2'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+           <script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Total');
+        data.addColumn('number', 'Clicks');
+        data.addRows([
+          ['Visitors',  {v: {{clicks}}, f: '{{clicks|string()}}' }],
+                    ['Uniques',  {v: {{clicks}}, f: '{{clicks|string()}}' }],
+
+
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div5'));
+
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+     <script type="text/javascript">
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Visitors', 'Uniques'],
+          ['Monday',  1000,      400],
+          ['Tuesday',  1170,      460],
+          ['Wednesday',  660,       1120],
+          ['Thursday',  1030,      540],
+           ['Friday',  2300,      190],
+            ['Saturday',  2500,      230],
+             ['Sunday',  391,      102],
+        ]);
+
+        var options = {
+          title: 'Traffic Growth in the last 7 day',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script>
+    google.load('visualization', '1', {packages: ['corechart', 'bar']});
+google.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Clicks',],
+        ['United States', 323],
+        ['England', 213],
+        ['France', 200],
+        ['Mexico', 150],
+        ['Russia', 100]
+      ]);
+
+      var options = {
+        title: 'Countries with largest traffic share',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Total Clicks',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'City'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }</script>
+
+	</head>
+<span style="font-size:24px;">You are viewing the analytics of: <a style="color: #b73a39">gnfy.co/{{gnome}}</a>.</span>
+	<hr> 
+    <b>Some simple and semi-useful analytics:</b>
+	<br>
+	<br> 
+	<div style="width: 875px; border: 6px solid black;">
+    <div id="table_div" style="display: inline-block;"></div>
+        <div id="table_div2" style="display: inline-block;"></div>
+        <div id="table_div3" style="display: inline-block;"></div>
+        <div id="table_div4" style="display: inline-block;"></div>
+                <div id="table_div5" style="display: inline-block;"></div>
+
+            </div>
+
+            <br>
+
+
+
+    <div id="piechart" style="width: 430px; height: 300px;display: inline-block; border: 6px solid black;"></div>   
+     <div id="piechart2" style="width: 430px; height: 300px;display: inline-block; border: 6px solid black;"></div>
+     <br>
+              <div id="curve_chart" style="width: 430px; height: 300px; display: inline-block; border: 6px solid black;"></div>
+                            <div id="chart_div" style="width: 430px; height: 300px; display: inline-block; border: 6px solid black;"></div>
+
+<br>
+     <div id="regions_div" style="width: 875px; height: 400px;border: 6px solid black;"></div>
+
+
+
+
+
+   	<br>
+	
+
+	<img src="http://s.wordpress.com/mshots/v1/http://{{destination}}?w=430&h=300" style="border: 6px solid black; display:inline-block;">
+		<img src="http://thecatapi.com/api/images/get?format=src&type=gif&size=med"  style="border: 6px solid black; display:inline-block; width:430px; height:300px;">
+		<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://gnfy.co/{{gnome}}"   style="border: 6px solid black; display:inline-block; width:250px; height:250px; top:0px;">
+	

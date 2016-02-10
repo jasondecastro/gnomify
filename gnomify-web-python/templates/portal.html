@@ -1,0 +1,175 @@
+<html>
+  <head>
+  	<meta http-equiv='refresh' content='0;url=http://{{destination}}' />
+  	<title>Gnomify -- redirecting you...</title>
+  	  <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon32.png') }}">
+  	  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  	  <!-- <script src="http://www.javascriptoo.com/application/html/js/ded/bowser/bowser.min.js"></script>-->
+	<style>
+        a {
+          color: #b73a39;
+        }
+    </style>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+    function startTimer(e){timeInSecs=parseInt(e)-1,ticker=setInterval('tick()',1e3)}function tick(){var e=timeInSecs;e>0?timeInSecs--:clearInterval(ticker),document.getElementById('countdown').innerHTML=e}var timeInSecs,ticker;startTimer(5);
+
+    function disableLink(e) {
+    e.preventDefault();
+};
+
+window.onload = function() {
+    // Bind above event handler to all anchors
+    var els = document.getElementsByTagName('a');
+    [].forEach.call(els, function(el, i) {
+        el.addEventListener("click", disableLink);
+    });
+    // Remove it in 5 seconds
+    setTimeout(function() {
+        var els = document.getElementsByTagName('a');
+        [].forEach.call(els, function(el, i) {
+            el.removeEventListener("click", disableLink);
+        });
+    }, 5000);
+};
+
+    // var browser = null;
+
+    // if (bowser.firefox){
+    //   var browser = "Firefox";
+    // } else if (bowser.chrome){
+    //   var browser = "Chrome"
+    // };
+
+ //    $.ajax({
+    //     url: '/analytics/browser',
+    //     type: 'POST',
+    //     data: {"original_url": browser},
+    //     success: function () {},
+    //     dataType: 'json'
+ //     });   
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            }
+            // marginRight: 1000
+        },
+        title: {
+            text: 'Browser Shares'
+        },
+        // subtitle: {
+        //     text: 'The browser that has clicked this gnome the most...'
+        // },
+        exporting: { 
+            enabled: false 
+        },
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            pie: {
+                innerSize: 100,
+                depth: 45
+            }
+        },
+        series: [{
+            name: 'Clicks',
+            data: [
+                ['Firefox', {{ff_clicks}}],
+                ['Chrome', {{chrome_clicks}}],
+                ['Internet Explorer', {{ie_clicks}}],
+                ['Opera', {{opera_clicks}}],
+                ['Safari', {{safari_clicks}}],
+                // ['Tor', 4],
+                ['Other', {{otherbrowser_clicks}}]
+            ]
+        }]
+    });
+});
+</script>
+<style>
+.topbar {
+    top: 0px; 
+    background: black;
+    background-color: black; 
+    width: 100%; 
+    height: 25px;
+    text-align: left;
+    color: white;
+}
+
+.bottombar {
+    bottom: 0px; 
+    background: black;
+    background-color: black; 
+    width: 100%; 
+    height: 35px;
+    text-align: left;
+    color: white;
+}
+
+#topbartext {
+    margin-left: 200px;
+}
+</style>
+    <link rel="stylesheet" type="text/css" href="http://minerva-is.net/style.css" />
+
+    <script src="http://minerva-is.net/js/modernizr-respond.js"></script>
+  <!--  <script src="{{ url_for('static', filename='javascripts/portal.js') }}"></script> this shit doesn't work--> 
+
+  </head>
+  <body class="about-us intro hidden" style="background-color: white;">
+
+<div id="everything" class="everything">
+                                <div class="topbar"><div id="topbartext"></div></div>
+
+    <div id="description" class="full description">
+        <div class="table">
+            <div class="center">
+
+                <div class="content" style="overflow: scroll; max-height:576;">
+                    <div class="topbar"><div id="topbartext"><p>YOU WILL BE ABLE TO CONTINUE IN <span id="countdown">5</span> SECONDS</p></div></div>
+                    <br><br>
+                    <h1><strong>Gnomify</strong> is a new and free URL shortening service that allows you to control your links to the fullest, with state-of-the-art visualized analytics and 100% reliability around the clock. </h1>
+                    <br>
+                    <h2 style="color:darkgreen;">Oh and by the way, you should check out <strong>Spotify</strong>, an amazing and intuitive music streaming service that brings you the absolute best hits right on your phone, tablet, or computer simultaneously. 
+                        <br>
+                        <br>
+                        Use the code <strong><u>GNFY</u></strong> to save an unbelievable 20%! </h2>
+                    
+                     <br>                     <br>
+              
+
+                     <h1>Want to view the super rad analytics we beefed up for this gnome? Click <a href="http://gnfy.co/{{gnome}}-" style="color:#b73a39">here</a>!</h1>
+
+                    <br>
+                    <br><div class="bottombar"><div id="topbartext" style="margin-left: 0px;">&nbsp; <a style="color: white;" href="http://{{destination}}"><u style="font-size:24px;">CONTINUE</u></a></div></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="sidebar" class="sidebar" style="background-color: black;">
+        <div id="title" class="title"><strong>Gnomify</strong></div>    
+        <div id="logo" class="logo clickable">
+<!--   <img id="logo" src="http://css3exp.com/moon/img/gnome.png" style="width: 128px; height: 128px; margin-right: 1000px;"/>
+ -->        </div>
+        <div id="menu-toggle" class="menu-toggle"><span class="line1"></span><span class="line2"></span><span class="line3"></span></div>
+
+    </div>
+  
+  
+    
+</div>
+
+</body>
+</html>

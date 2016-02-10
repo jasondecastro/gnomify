@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet">
+  <link href="//cdn2.Gnomify.com/static/css/main.css?h=3143f" rel="stylesheet">
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
+  
+<title>Gnomify - API Documentation</title>
+    <style>
+  .videos-sidebar-footer a.logo,.footer a.logo,.videos-sidebar-footer a.logo {
+background-image:url("../images/icon32.png");
+background-position:left center;
+background-repeat:no-repeat;
+background-size:16px 16px;
+}
+
+a {
+  color: #b73a39;
+}
+  a:hover {
+  color: #b73a39;
+}
+  </style>
+<style>
+h1 {
+  margin-top: 0px;
+  margin-bottom:20px;
+}
+.container {
+  vertical-align:top;
+  padding:30px 30px 0px 30px;
+}
+.content {
+  width: 100%;
+  text-align: left;
+}
+
+.endpoint {
+  margin-bottom: 40px;
+}
+
+#intro {
+  margin-bottom: 40px;
+}
+
+.url {
+  margin-left:5px;
+  font-size: 16px;
+  color: #0f90fa;
+  position: relative;
+  top: 2px;
+  margin-bottom:15px;
+  display: inline-block;
+}
+
+.method {
+  margin-bottom:15px;
+}
+
+.explain {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+</style>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-56474110-1', 'auto');
+  
+  ga('send', 'pageview');
+  </script>
+</head>
+
+  <body style="border-top: 6px solid #b73a39">
+  
+  <div class="container">
+    <div class="content">
+  
+
+  
+  <div class="row">
+    <div class="col-xs-3">
+      <div style="padding-bottom:10px;"><b>Gnomify API</b></div>
+      <div><a href="#upload">Upload file</a></div>
+      <div><a href="#import">Import file from URL</a></div>
+      <div><a href="#status">Check upload status</a></div>
+    </div>
+    <div class="col-xs-8">
+      <div id="intro">
+        <h1 class="title">Getting Started</h1>
+        <div class="content">
+          To use the Gnomify API, you must be a registered Gnomify user. If you haven't yet, <a href="signup">sign up here.</a>
+          <br/><br/>Requests to the API must be authenticated using <b>Basic Auth</b> with your Gnomify username and password.
+        </div>
+      </div>
+      <div class="endpoint" id="upload">
+        <h1 class="title">Upload file</h1>
+        <div class="content">
+          <span class="method label label-primary">POST</span>
+          <span class="url">https://api.Gnomify.com/upload</span>
+          <pre>curl -F file=@<b>myvideo.mp4</b> -u <b>username</b>:<b>password</b> https://api.Gnomify.com/upload</pre>
+          <div class="explain">Don't resize</div>
+          <pre>curl -F file=@<b>myvideo.mp4</b> -u <b>username</b>:<b>password</b> https://api.Gnomify.com/upload?<b style="color: red">noresize</b></pre>
+          <div class="explain">Remove sound</div>
+          <pre>curl -F file=@<b>myvideo.mp4</b> -u <b>username</b>:<b>password</b> https://api.Gnomify.com/upload?<b style="color: red">mute</b></pre>
+          <samp>[{"shortcode": "e4d"}]</samp>
+        </div>
+      </div>
+      <div class="endpoint" id="import">
+        <h1 class="title">Import file from URL</h1>
+        <div class="content">
+          <span class="method label label-success">GET</span>
+          <span class="url">https://api.Gnomify.com/import</span>
+          <pre>curl -u <b>username</b>:<b>password</b> https://api.Gnomify.com/import?url=<b>https://archive.org/download/Windows7WildlifeSampleVideo/Wildlife.wmv</b></pre>
+          <div class="explain">Don't resize</div>
+          <pre>curl -u <b>username</b>:<b>password</b> https://api.Gnomify.com/import?url=<b>https://archive.org/download/Windows7WildlifeSampleVideo/Wildlife.wmv</b>&amp;<b style="color: red">noresize</b></pre>
+          <div class="explain">Remove sound</div>
+          <pre>curl -u <b>username</b>:<b>password</b> https://api.Gnomify.com/import?url=<b>https://archive.org/download/Windows7WildlifeSampleVideo/Wildlife.wmv</b>&amp;<b style="color: red">mute</b></pre>
+          <samp>[{"shortcode": "e4d"}]</samp>
+        </div>
+      </div>
+      <div class="endpoint" id="status">
+        <h1 class="title">Check upload status</h1>
+        <div class="content">
+          <span class="method label label-success">GET</span>
+          <span class="url">https://api.Gnomify.com/videos/<i>{shortcode}</i></span>
+          <pre>curl -u <b>username</b>:<b>password</b> https://api.Gnomify.com/videos/<b>e4d</b></pre>
+          <div class="explain">Ready to be viewed at streamble.com/e4d, or raw at https://cdn.Gnomify.com/video/7703b9c0660511e4a54d9d7106055d3a.mp4</div>
+          <samp>{"status": 2,  "url_root": "//cdn.Gnomify.com/video/7703b9c0660511e4a54d9d7106055d3a", "formats": ["mp4", "webm"]}</samp>
+          <div class="explain">Processing</div>
+          <samp>{"status": 1}</samp>
+          <div class="explain">Uploading</div>
+          <samp>{"status": 0}</samp>
+          <div class="explain">Error</div>
+          <samp>{"status": 3, "message": "Invalid video format!"}</samp>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  <div class="footer">
+  <a href="/" id="brand-button" class="logo" style="color:#b73a39;">Gnomify</a>
+    <a href="/about">About</a>
+    <a href="/documentation" class="hidden-xs">API</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms" >Terms</a>
+    <a href="/signup" id="account-button">Sign Up</a>
+  </div>
+
+  
+    </div>
+  </div>
+  
+
+  </body>
+</html>

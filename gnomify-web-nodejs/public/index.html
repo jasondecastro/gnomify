@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <title>Gnomify - simple url shortening</title>
+  <meta name="description" content="Upload and watch videos instantly on your phone, tablet or desktop.">
+
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet">
+  <link href="http://cdn2.streamable.com/static/css/main.css?h=84edc" rel="stylesheet">
+  <link rel="shortcut icon" href="images/icon32.png">
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="./javascripts/rotate/jQueryRotate.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.Core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.Core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.Core.min.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.swf"></script>
+  
+  
+  <style>
+  .videos-sidebar-footer a.logo,.footer a.logo,.videos-sidebar-footer a.logo {
+background-image:url("../images/icon32.png");
+background-position:left center;
+background-repeat:no-repeat;
+background-size:16px 16px;
+}
+
+a {
+  color: #b73a39;
+}
+
+a:hover {
+  color: #b73a39;
+}
+
+
+
+.onboard {
+    width: 410px;
+  height: 150px;
+  top: 1px;
+  margin-top: 15px;
+  margin-right: 10px;
+  position: absolute;
+  right: 1px;
+  padding: 20px 0 0; 
+
+  border: 1px solid #d8d8d8; 
+  background: #f9f9f9;
+
+  -moz-border-radius: 4px; 
+  -webkit-border-radius: 4px; 
+  border-radius: 4px; 
+  -moz-box-shadow: inset 0 0 0 1px #fff;
+  -webkit-box-shadow: inset 0 0 0 1px #fff;
+  box-shadow: inset 0 0 0 1px #fff; 
+}
+  
+  </style>
+  </head>
+  <body style="border-top: 6px solid #b73a39">
+    <div class='container container-center'><div class="content-center-container">
+     <!-- <div class="onboard">
+        <img style=" left: 1px; position: absolute; margin-left:15px; height: 100px; width: 100px;" src="http://penguinssauce.com/wp-content/uploads/2013/04/Rangers.png">
+        <h4 style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With the free Gnomify plugin, you can take shortening links to a whole new level...</h4>
+        <br>
+
+
+      </div>-->
+  <div class="content">
+  <img id="logo" src="http://css3exp.com/moon/img/gnome.png" style="border:0"/>
+ <div id="intro">
+      <h1>Why create a Bitlink when you can create a Gnome?</h1>
+      <div style="display: none;" id="output"></div>
+      <h1 id="finalOutput"></h1> 
+      <div class="btn-group">
+        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Put that absurdly long link here." value="" >
+      <br>
+        <button type="submit" id="upload-button eee" class="btn btn1 btn-primary" style="background-color: #b73a39; border-color:#802827;" onmouseover="this.style.backgroundColor='#be4d4c'" onmouseout="this.style.backgroundColor='#b73a39'"><div class="uploadicon"> Begin Gnomifying</div></button>
+        <button type="button submit" style="background-color: #b73a39; border-color:#802827" class="btn1 btn btn-primary dropdown-toggle" onmouseover="this.style.backgroundColor='#be4d4c'" onmouseout="this.style.backgroundColor='#b73a39'" data-toggle="dropdown" aria-expanded="false">
+
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-home" role="menu">
+          <li>
+            <a href="" id="upload-hd">
+              <div class="hdicon"> No Ads
+                <button
+                  class="btn btn-xs btn-default"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Maintain source resolution (videos over 854 x 480 are normally resized)"
+                  data-original-title="?">(?)
+                </button>
+			        </div>
+            </a>
+          </li>
+          <li><a href="" id="upload-gif"><div class="muteicon"> Don't Track</div></a></li>
+          <li class="divider"></li>
+          <li><a href="" id="upload-link"><div class="clipicon"> Quick Customize <br></div></a></li>
+        </ul>
+
+      </div>
+    </div>
+
+
+    <div class="processing" style="font-size:22px; margin-top:20px; margin-bottom: 25px;" id="shortcode"></div>
+    <div class="progress processing" id="main-progress-bar">
+      <span class="progress-text" style="color: #0f90fa; line-height:32px;"></span>
+      <div class="progress-bar" role="progressbar">
+        <span class="progress-text" style="color: white;  line-height:32px;"></span>
+      </div>
+    </div>
+    <div id="error" style="display: none;">
+      An error has occurred.
+    </div>
+    <button class="grayButton processing" id="cancel-button" style="margin-top: 28px;">Cancel</button>
+  </div>
+</div>
+<div class="footer">
+  <a href="/" id="brand-button" class="logo" style="color:#b73a39;">Gnomify</a>
+  <a href="/about">About</a>
+  <a href="/documentation" class="hidden-xs">API</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms" >Terms</a>
+  <a id="account-button" class="preload"></a>
+</div>
+</div>
+  </body>
+  <script src="./javascripts/gnomify.js"></script>
+</html>

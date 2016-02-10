@@ -1,0 +1,35 @@
+{
+  "name": "Gnomify -- simple URL shortening",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Shortening URLs has never been so simple, screw Bitly.",
+  "homepage_url": "http://gnomify.net",
+  "icons": {
+    "16": "icons/assets/icon16.png",
+    "48": "icons/assets/icon48.png",
+    "128": "icons/assets/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/assets/icon19.png",
+    "default_title": "browser action demo"
+    //"default_popup": "src/browser_action/browser_action.html"
+  },
+  "permissions": [
+    "http://gnomify.net/",
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "notifications",
+    "geolocation",
+    "tabs",
+    "activeTab"
+  ],
+  "omnibox": {
+    "keyword": "extensionizr"
+  }
+}
