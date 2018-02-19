@@ -314,4 +314,4 @@ if __name__ == '__main__':
 			`othermedia_clicks` INTEGER
 		);
 	""")
-	app.run(host="0.0.0.0", port=80, debug=True)
+	app.run(port=8080, debug=True)
